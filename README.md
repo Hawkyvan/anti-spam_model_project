@@ -1,7 +1,6 @@
 # anti-spam_model_project
 Parsing and preprocessing data from .eml files, using them to train some models, and analyzing results
 
-<class 'pandas.core.frame.DataFrame'>
 RangeIndex: 1600 entries, 0 to 1599
 Data columns (total 6 columns):
 | # |  Column     | Non-Null Count | Dtype 
