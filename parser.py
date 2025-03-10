@@ -88,11 +88,11 @@ def parse_email(file_path):
         }
         
         text_parts = []
-
+# Проверка письма на многокомпонентность
         if message.is_multipart():
             for part in message.walk():
                 if part.is_multipart():
-                    continue  # Пропускаем контейнерные части
+                    continue
                 
                 content_type = part.get_content_type()
                 content_disposition = part.get_content_disposition()
