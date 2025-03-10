@@ -150,15 +150,63 @@ Parsing and preprocessing data from .eml files, using them to train some models,
 
 По результатам основного анализа, можно выделить следующие ключевые элементы:
 - общее кол-во файлов: 1600
-- 
-
+- "From":
+  - Кол-во заполненных ячеек: 1599
+  - Уникальных значений: 1094
+  - Самое частое значение: boingboing <rssfeeds@example.com>
+  - Кол-во вхождений самого частого значения: 31
+- "To":
+  - Кол-во заполненных ячеек: 1544
+  - Уникальных значений: 550
+  - Самое частое значение: yyyy@example.com
+  - Кол-во вхождений самого частого значения: 142
+- "Date":
+  - Кол-во заполненных ячеек: 1599
+  - Уникальных значений: 1551
+  - Самое частое значение: Fri, 29 Mar 2002 05:01:01 +0000
+  - Кол-во вхождений самого частого значения: 4
+- "Text":
+  - Кол-во заполненных ячеек: 1583
+  - Уникальных значений: 1455
+  - Самое частое значение: dear paypal member account randomly flagged sy...	
+  - Кол-во вхождений самого частого значения: 8
+- "Mark":
+  - Кол-во заполненных ячеек: 1600
+  - Уникальных значений: 2
+  - Самое частое значение: spam
+  - Кол-во вхождений самого частого значения: 1000
+ 
+Cравнение кол-ва писем спам/не спам в наборе данных
 ![image](https://github.com/user-attachments/assets/15ae23a6-f9c4-43c1-8990-9236c85467fe)
 
+Данный график отображает соотношение кол-ва обработанных писем спам/не спам, находящихся в файле *eml_dataset.csv*:
+- spam: 1000
+- not spam: 600
+
+Самые частые отправители
 ![image](https://github.com/user-attachments/assets/c19e5f9c-4304-40a9-89f4-184e34082281)
 
+На этом графике отображены сведения по 10 самым частым отправителям (отправитель, кол-во сообщений):
+1. boingboing <rssfeeds@example.com>: 31 письмо
+2. guardian <rssfeeds@example.com>: 27 писем
+3. Tom <tomwhore@slack.net>: 22 письма
+4. PayPal <service@paypal.com>: 17 писем
+5. Gary Lawrence Murphy <garym@canada.cim>: 14 писем
+6. tim.one@comcast.net: 14 писем
+7. gamasutra <rssfeeds@example.com>: 13 писем
+8. bugzilla-daemon@hughes-family.org: 13 писем
+9. fark <rssfeeds@example.com>: 13 писем
+10. Tim Chapman <timc@2ubh.com>: 11 писем
+
+Рсапределние писем по частоте во времени
 ![image](https://github.com/user-attachments/assets/e3fdf455-53d6-40bc-85cc-af2682cc4190)
 
-Neural Network (MLP) Performance:
+Этот график иллюстрирует частоту отправлений во временном диапазоне:
+Год самых частых отправлений писем, вне зависимости от их статуса - 2002: около 190 писем
+
+## Результаты обучения различных моделей
+
+1. Neural Network (MLP) Performance:
 |              | precision |   recall | f1-score |  support
 |--------------|-----------|----------|----------|----------
 |            0 |      0.96 |     0.95 |     0.95 |      128
@@ -167,7 +215,9 @@ Neural Network (MLP) Performance:
 |    macro avg |      0.96 |     0.96 |     0.96 |      317
 | weighted avg |      0.96 |     0.96 |     0.96 |      317
 
-Logistic Regression Performance:
+Общая точность определения (accuracy) - 96%
+
+2. Logistic Regression Performance:
 |              | precision |  recall | f1-score |  support
 |--------------|-----------|---------|----------|----------
 |            0 |      0.98 |    0.93 |     0.95 |      128
@@ -176,7 +226,9 @@ Logistic Regression Performance:
 |    macro avg |      0.96 |    0.96 |     0.96 |      317
 | weighted avg |      0.96 |    0.96 |     0.96 |      317
 
-SVM Performance:
+Общая точность определения (accuracy) - 96%
+
+3. SVM Performance:
 |              | precision |   recall | f1-score |  support
 |--------------|-----------|----------|----------|----------
 |            0 |      0.95 |     0.97 |     0.96 |      128
@@ -185,7 +237,9 @@ SVM Performance:
 |    macro avg |      0.97 |     0.97 |     0.97 |      317
 | weighted avg |      0.97 |     0.97 |     0.97 |      317
 
-Bernoulli Naive Bayes Performance:
+Общая точность определения (accuracy) - 97%
+
+4. Bernoulli Naive Bayes Performance:
 |              | precision |   recall | f1-score |  support
 |--------------|-----------|----------|----------|----------
 |            0 |      0.86 |     0.95 |     0.90 |      128
@@ -193,3 +247,8 @@ Bernoulli Naive Bayes Performance:
 |     accuracy |           |          |     0.92 |      317
 |    macro avg |      0.91 |     0.92 |     0.92 |      317
 | weighted avg |      0.92 |     0.92 |     0.92 |      317
+
+Общая точность определения (accuracy) - 92%
+
+Все модели показали средний резльтат > 90%, но самой точной оказалась модель основанная на методе опорных векторов (SVM) - 97%
+SVM - это алгоритм Машинного обучения (ML), который проецирует Наблюдения (Observation) в n-мерном пространстве Признаков (Feature) с целью нахождения гиперплоскости, разделяющей наблюдения на классы.
