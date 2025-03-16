@@ -1,7 +1,7 @@
 # anti-spam_model_project
 Parsing and preprocessing data from .eml files, using them to train some models, and analyzing 
 
-Данный проект создан в целях обучения основам Machine Learning и Data Science
+Данный проект создан в целях изучения основ Machine Learning и Data Science
 
 Возможности данного проекта:
 - автоматизированный сбор данных (отправитель, получатель, дата письма, текст письма, метка спам/не спам) из файлов с расширением .eml (parsing)
